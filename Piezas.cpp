@@ -60,8 +60,8 @@ Piece Piezas::dropPiece(int column)
   //Toggling turn
   if(turn == O)
   {
-    turn = X
-  }else{ turn = O }
+    turn = X;
+  }else{ turn = O; }
 
   // Checking for out of bounds
   if (column < 0 || column > BOARD_COLS)
@@ -72,7 +72,7 @@ Piece Piezas::dropPiece(int column)
       if (board[row][column] == Blank)
       {
           board[row][column] = placedPiece;
-          return placedPiece
+          return placedPiece;
       }
   }
 
@@ -88,9 +88,9 @@ Piece Piezas::pieceAt(int row, int column)
 {
   // Checking bounds
   if (row < 0 || row >= BOARD_ROWS)
-  { return Invalid }
+  { return Invalid; }
   if (column < 0 || column >= BOARD_COLS)
-  { return Invalid }
+  { return Invalid; }
 
   return board[row][column];
 }
