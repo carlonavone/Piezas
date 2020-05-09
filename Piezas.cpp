@@ -42,6 +42,7 @@ void Piezas::reset()
     for (int col = 0; col < BOARD_ROWS; col++){
       board[row][col] = Blank;
     }
+  }
 }
 
 /**
@@ -90,7 +91,7 @@ Piece Piezas::pieceAt(int row, int column)
   { return Invalid }
   if (column < 0 || column >= BOARD_COLS)
   { return Invalid }
-  
+
   return board[row][column];
 }
 
