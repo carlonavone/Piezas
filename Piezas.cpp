@@ -15,64 +15,88 @@
 * So that a piece dropped in column 2 should take [0,2] and the next one
 * dropped in column 2 should take [1,2].
 **/
-// main(){
-//   Piezas board;
-//   board.reset();
-//   board.dropPiece(0);
-//   board.dropPiece(1);
-//   board.dropPiece(0);
-//   board.dropPiece(3);
-//   board.dropPiece(0);
-//   board.dropPiece(1);
-//   board.dropPiece(1);
-//   board.dropPiece(3);
-//   board.dropPiece(2);
-//   board.dropPiece(2);
-//   board.dropPiece(3);
-//   board.dropPiece(2);
-//   board.dropPiece(2);
-//   board.wittlehelper();
-//   printf("game state = %i\n", board.gameState());
-//
-//   board.reset();
-//   board.dropPiece(0);
-// 	board.dropPiece(1);
-// 	board.dropPiece(0);
-// 	board.dropPiece(3);
-// 	board.dropPiece(2);
-// 	board.dropPiece(1);
-// 	board.dropPiece(3);
-//   board.dropPiece(2);
-//   board.dropPiece(0);
-//   board.dropPiece(2);
-//   board.dropPiece(1);
-// 	board.dropPiece(3);
-//   board.wittlehelper();
-//   printf("game state = %i\n", board.gameState());
-//
-//
-//   // printf("ahhh\n");
-//   //
-// 	// board.dropPiece(1); //O
-// 	// board.dropPiece(3); //X
-//   // board.dropPiece(2); //O
-//   // board.dropPiece(0); //X
-//   // board.dropPiece(2); //O
-//   // board.dropPiece(1); //X
-// 	// board.dropPiece(3); //O
-//   //
-// 	// board.dropPiece(0); //O Skip
-// 	// board.dropPiece(1); //X
-// 	// board.dropPiece(2); //O
-// 	// board.dropPiece(2); //X
-// 	// board.dropPiece(0); //O Skip
-// 	// board.dropPiece(3); //X
-// 	// board.dropPiece(3); //O
-// 	// board.dropPiece(0); //X Skip
-// 	// board.dropPiece(3); //O
-//   // board.wittlehelper();
-//
-// }
+main(){
+  Piezas board;
+  board.reset();
+
+  //tie
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(0);
+  board.dropPiece(3);
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(1);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
+  board.wittlehelper();
+  printf("game state = %i\n", board.gameState());
+  //
+  // board.reset();
+  //
+  // // O vert
+  // board.dropPiece(0);
+	// board.dropPiece(1);
+	// board.dropPiece(0);
+	// board.dropPiece(3);
+	// board.dropPiece(2);
+	// board.dropPiece(1);
+	// board.dropPiece(3);
+  // board.dropPiece(2);
+  // board.dropPiece(0);
+  // board.dropPiece(2);
+  // board.dropPiece(1);
+	// board.dropPiece(3);
+  // board.wittlehelper();
+  // printf("game state = %i\n", board.gameState());
+  //
+  // board.reset();
+  // // tie
+  // board.dropPiece(5);
+	// board.dropPiece(0);
+	// board.dropPiece(2);
+	// board.dropPiece(0);
+	// board.dropPiece(0);
+	// board.dropPiece(1);
+	// board.dropPiece(0);
+	// board.dropPiece(1);
+	// board.dropPiece(0);
+	// board.dropPiece(1);
+	// board.dropPiece(2);
+	// board.dropPiece(2);
+	// board.dropPiece(0);
+	// board.dropPiece(3);
+	// board.dropPiece(3);
+	// board.dropPiece(0);
+	// board.dropPiece(3);
+  //   board.wittlehelper();
+  // printf("game state = %i\n", board.gameState());
+  // printf("ahhh\n");
+  //
+	// board.dropPiece(1); //O
+	// board.dropPiece(3); //X
+  // board.dropPiece(2); //O
+  // board.dropPiece(0); //X
+  // board.dropPiece(2); //O
+  // board.dropPiece(1); //X
+	// board.dropPiece(3); //O
+  //
+	// board.dropPiece(0); //O Skip
+	// board.dropPiece(1); //X
+	// board.dropPiece(2); //O
+	// board.dropPiece(2); //X
+	// board.dropPiece(0); //O Skip
+	// board.dropPiece(3); //X
+	// board.dropPiece(3); //O
+	// board.dropPiece(0); //X Skip
+	// board.dropPiece(3); //O
+  // board.wittlehelper();
+
+}
 
 /**
 * Constructor sets an empty board (default 3 rows, 4 columns) and
@@ -167,7 +191,8 @@ Piece Piezas::gameState()
   int OcurrentScore = 0;
 
   // Values for highscore
-  int Xhighscore, Ohighscore = 0;
+  int Xhighscore = 0;
+  int Ohighscore = 0;
 
   // Checking horizontally
   for (int row = 0; row < BOARD_ROWS; row++){
