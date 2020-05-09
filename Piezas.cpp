@@ -15,6 +15,64 @@
 * So that a piece dropped in column 2 should take [0,2] and the next one
 * dropped in column 2 should take [1,2].
 **/
+// main(){
+//   Piezas board;
+//   board.reset();
+//   board.dropPiece(0);
+//   board.dropPiece(1);
+//   board.dropPiece(0);
+//   board.dropPiece(3);
+//   board.dropPiece(0);
+//   board.dropPiece(1);
+//   board.dropPiece(1);
+//   board.dropPiece(3);
+//   board.dropPiece(2);
+//   board.dropPiece(2);
+//   board.dropPiece(3);
+//   board.dropPiece(2);
+//   board.dropPiece(2);
+//   board.wittlehelper();
+//   printf("game state = %i\n", board.gameState());
+//
+//   board.reset();
+//   board.dropPiece(0);
+// 	board.dropPiece(1);
+// 	board.dropPiece(0);
+// 	board.dropPiece(3);
+// 	board.dropPiece(2);
+// 	board.dropPiece(1);
+// 	board.dropPiece(3);
+//   board.dropPiece(2);
+//   board.dropPiece(0);
+//   board.dropPiece(2);
+//   board.dropPiece(1);
+// 	board.dropPiece(3);
+//   board.wittlehelper();
+//   printf("game state = %i\n", board.gameState());
+//
+//
+//   // printf("ahhh\n");
+//   //
+// 	// board.dropPiece(1); //O
+// 	// board.dropPiece(3); //X
+//   // board.dropPiece(2); //O
+//   // board.dropPiece(0); //X
+//   // board.dropPiece(2); //O
+//   // board.dropPiece(1); //X
+// 	// board.dropPiece(3); //O
+//   //
+// 	// board.dropPiece(0); //O Skip
+// 	// board.dropPiece(1); //X
+// 	// board.dropPiece(2); //O
+// 	// board.dropPiece(2); //X
+// 	// board.dropPiece(0); //O Skip
+// 	// board.dropPiece(3); //X
+// 	// board.dropPiece(3); //O
+// 	// board.dropPiece(0); //X Skip
+// 	// board.dropPiece(3); //O
+//   // board.wittlehelper();
+//
+// }
 
 /**
 * Constructor sets an empty board (default 3 rows, 4 columns) and
@@ -105,7 +163,8 @@ Piece Piezas::pieceAt(int row, int column)
 Piece Piezas::gameState()
 {
   // Values for current Score
-  int XcurrentScore, OcurrentScore = 0;
+  int XcurrentScore = 0;
+  int OcurrentScore = 0;
 
   // Values for highscore
   int Xhighscore, Ohighscore = 0;
@@ -113,7 +172,8 @@ Piece Piezas::gameState()
   // Checking horizontally
   for (int row = 0; row < BOARD_ROWS; row++){
     // Resetting scores
-    XcurrentScore, OcurrentScore = 0;
+    XcurrentScore = 0;
+    OcurrentScore = 0;
     for (int col = 0; col < BOARD_COLS; col++){
       // Blank tile indicates game is not over
       if (board[row][col] == Blank)
@@ -147,7 +207,8 @@ Piece Piezas::gameState()
   // Checking Vertically
   for (int col = 0; col < BOARD_COLS; col++){
     // Resetting scores
-    XcurrentScore, OcurrentScore = 0;
+    XcurrentScore = 0;
+    OcurrentScore = 0;
     for  (int row = 0; row < BOARD_ROWS; row++){
       // Current cell is O
       if (board[row][col] == X)
