@@ -128,17 +128,18 @@ TEST(PiezasTest, gameStateXwins){
 TEST(PiezasTest, gameStateXwinsVertically){
   Piezas board;
   board.dropPiece(0);
-	board.dropPiece(1);
-	board.dropPiece(0);
-	board.dropPiece(3);
-	board.dropPiece(2);
-	board.dropPiece(1);
-	board.dropPiece(3);
-  board.dropPiece(2);
-  board.dropPiece(0);
-  board.dropPiece(2);
   board.dropPiece(1);
-	board.dropPiece(3);
+  board.dropPiece(0);
+  board.dropPiece(3);
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(1);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
   ASSERT_EQ(board.gameState(), X);
 }
 
@@ -162,20 +163,19 @@ TEST(PiezasTest, gameStateOwins){
 }
 
 TEST(PiezasTest, gameStateOwinsVertically){
-  Piezas board;
+  Piezas board; 
   board.dropPiece(0);
-  board.dropPiece(1);
+	board.dropPiece(1);
+	board.dropPiece(0);
+	board.dropPiece(3);
+	board.dropPiece(2);
+	board.dropPiece(1);
+	board.dropPiece(3);
+  board.dropPiece(2);
   board.dropPiece(0);
-  board.dropPiece(3);
-  board.dropPiece(0);
+  board.dropPiece(2);
   board.dropPiece(1);
-  board.dropPiece(1);
-  board.dropPiece(3);
-  board.dropPiece(2);
-  board.dropPiece(2);
-  board.dropPiece(3);
-  board.dropPiece(2);
-  board.dropPiece(2);
+	board.dropPiece(3);
   ASSERT_EQ(board.gameState(), O);
 }
 
