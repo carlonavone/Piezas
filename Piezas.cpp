@@ -1,5 +1,6 @@
 #include "Piezas.h"
-#include <vector>
+
+
 /** CLASS Piezas
 * Class for representing a Piezas vertical board, which is roughly based
 * on the game "Connect Four" where pieces are placed in a column and
@@ -14,7 +15,6 @@
 * So that a piece dropped in column 2 should take [0,2] and the next one
 * dropped in column 2 should take [1,2].
 **/
-
 
 /**
 * Constructor sets an empty board (default 3 rows, 4 columns) and
@@ -119,6 +119,18 @@ Piece Piezas::gameState()
       if (board[row][col] == Blank)
       { return Invalid; }
       // Current cell is O
+      else if (board[row][col] == X)
+      {
+        //Incrementing
+        XcurrentScore+=1;
+        //Setting Highscore
+        if ( Xhighscore < XcurrentScore)
+        { Xhighscore = XcurrentScore; }
+        // Resetting O Score
+        OcurrentScore = 0;
+
+      }
+      // Current cell is X
       else if (board[row][col] == O)
       {
         //Incrementing
@@ -129,17 +141,6 @@ Piece Piezas::gameState()
         // Resetting X Score
         XcurrentScore = 0;
       }
-      // Current cell is X
-      else if (board[row][col] == X)
-      {
-        //Incrementing
-        XcurrentScore+=1;
-        //Setting Highscore
-        if ( Xhighscore < XcurrentScore)
-        { Xhighscore = XcurrentScore; }
-        // Resetting O Score
-        OcurrentScore = 0;
-      }
     }
   } //Finished checking horizontally
 
@@ -149,18 +150,7 @@ Piece Piezas::gameState()
     XcurrentScore, OcurrentScore = 0;
     for  (int row = 0; row < BOARD_ROWS; row++){
       // Current cell is O
-      if (board[row][col] == O)
-      {
-        //Incrementing
-        OcurrentScore+=1;
-        //Setting Highscore
-        if ( Ohighscore < OcurrentScore)
-        { Ohighscore = OcurrentScore; }
-        // Resetting X Score
-        XcurrentScore = 0;
-      }
-      // Current cell is X
-      else if (board[row][col] == X)
+      if (board[row][col] == X)
       {
         //Incrementing
         XcurrentScore+=1;
@@ -169,6 +159,18 @@ Piece Piezas::gameState()
         { Xhighscore = XcurrentScore; }
         // Resetting O Score
         OcurrentScore = 0;
+
+      }
+      // Current cell is X
+      else if (board[row][col] == O)
+      {
+        //Incrementing
+        OcurrentScore+=1;
+        //Setting Highscore
+        if ( Ohighscore < OcurrentScore)
+        { Ohighscore = OcurrentScore; }
+        // Resetting X Score
+        XcurrentScore = 0;
       }
     }
   } // Done checking Vertically
