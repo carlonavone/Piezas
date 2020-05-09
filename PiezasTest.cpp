@@ -163,7 +163,7 @@ TEST(PiezasTest, gameStateOwins){
 }
 
 TEST(PiezasTest, gameStateOwinsVertically){
-  Piezas board; 
+  Piezas board;
   board.dropPiece(0);
 	board.dropPiece(1);
 	board.dropPiece(0);
@@ -194,23 +194,36 @@ TEST(PiezasTest, gameStateMidGame){
 
 TEST(PiezasTest, gameStateTie){
   Piezas board;
-  board.dropPiece(5);
-	board.dropPiece(0);
-	board.dropPiece(2);
-	board.dropPiece(0);
-	board.dropPiece(0);
-	board.dropPiece(1);
-	board.dropPiece(0);
-	board.dropPiece(1);
-	board.dropPiece(0);
-	board.dropPiece(1);
-	board.dropPiece(2);
-	board.dropPiece(2);
-	board.dropPiece(0);
-	board.dropPiece(3);
-	board.dropPiece(3);
-	board.dropPiece(0);
-	board.dropPiece(3);
+  // board.dropPiece(5);
+	// board.dropPiece(0);
+	// board.dropPiece(2);
+	// board.dropPiece(0);
+	// board.dropPiece(0);
+	// board.dropPiece(1);
+	// board.dropPiece(0);
+	// board.dropPiece(1);
+	// board.dropPiece(0);
+	// board.dropPiece(1);
+	// board.dropPiece(2);
+	// board.dropPiece(2);
+	// board.dropPiece(0);
+	// board.dropPiece(3);
+	// board.dropPiece(3);
+	// board.dropPiece(0);
+	// board.dropPiece(3);
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(0);
+  board.dropPiece(3);
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(1);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
   ASSERT_EQ(board.gameState(), Blank);
 }
 //
