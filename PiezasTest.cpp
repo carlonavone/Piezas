@@ -161,7 +161,7 @@ TEST(PiezasTest, gameStateOwins){
   ASSERT_EQ(board.gameState(), O);
 }
 
-TEST(PiezasTest, gameStateOwinsVertically){
+TEST(PiezasTest, gameStateOwinsVertically){ 
   Piezas board;
   board.dropPiece(0);
   board.dropPiece(1);
