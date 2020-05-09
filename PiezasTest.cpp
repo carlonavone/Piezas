@@ -158,7 +158,7 @@ TEST(PiezasTest, gameStateOwins){
   board.dropPiece(2);
   board.dropPiece(0);
   board.dropPiece(3);
-  ASSERT_EQ(board.gameState(), O);
+  ASSERT_EQ(board.gameState(), O); 
 }
 
 TEST(PiezasTest, gameStateOwinsVertically){
