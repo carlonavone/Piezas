@@ -76,7 +76,7 @@ TEST(PiezasTest, changingTurnsAfterDrop){
   EXPECT_EQ( board.dropPiece(1), 'X');
   EXPECT_EQ( board.dropPiece(2), 'O');
   EXPECT_EQ( board.dropPiece(3), 'X');
-  ASSERT_EQ( board.dropPiece(4), O);
+  ASSERT_EQ( board.dropPiece(1), O);
 }
 
 TEST(PiezasTest, doesBoardReset){
