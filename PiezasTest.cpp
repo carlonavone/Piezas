@@ -39,43 +39,54 @@ TEST(PiezasTest, isInitializedBoardBlank){
 TEST(PiezasTest, dropPieceInBoundsReturnValue){
   Piezas board;
   Piece piecePlaced = board.dropPiece(1);
-  ASSERT_EQ(piecePlaced, 'X');
+  ASSERT_EQ(piecePlaced, X);
 }
 
 TEST(PiezasTest, dropPieceOutOfBoundsReturnValue){
   Piezas board;
   Piece piecePlaced = board.dropPiece(12);
-  ASSERT_EQ(piecePlaced, '?');
+  ASSERT_EQ(piecePlaced, Invalid);
 }
 
-TEST(PiezasTest, dropPieceInBounds){
+TEST(PiezasTest, dropPieceInBoundsX){
   Piezas board;
   board.dropPiece(1);
-  ASSERT_EQ(board.pieceAt(0,1), 'X');
+  ASSERT_EQ(board.pieceAt(0,1), X);
 }
 
+TEST(PiezasTest, dropPieceInBoundsO){
+  Piezas board;
+  board.dropPiece(1);
+  board.dropPiece(2);
+  ASSERT_EQ(board.pieceAt(0,2), O);
+}
 
 TEST(PiezasTest, pieceAtInBounds){
   Piezas board;
   board.dropPiece(1);
-  ASSERT_EQ(board.pieceAt(0,1), 'X');
+  ASSERT_EQ(board.pieceAt(0,1), X);
+}
+
+TEST(PiezasTest, pieceAtBlank){
+  Piezas board;
+  ASSERT_EQ(board.pieceAt(0,1), Blank);
 }
 
 TEST(PiezasTest, pieceAtOutOfBounds){
   Piezas board;
-  ASSERT_EQ(board.pieceAt(0,12), '?');
+  ASSERT_EQ(board.pieceAt(0,12), Invalid);
 }
 
 TEST(PiezasTest, CheckFirstTurn){
   Piezas board;
-  ASSERT_EQ(board.dropPiece(1), 'X');
+  ASSERT_EQ(board.dropPiece(1), X);
 }
 
 TEST(PiezasTest, changingTurnsAfterDrop){
   Piezas board;
-  EXPECT_EQ( board.dropPiece(1), 'X');
-  EXPECT_EQ( board.dropPiece(2), 'O');
-  EXPECT_EQ( board.dropPiece(3), 'X');
+  EXPECT_EQ( board.dropPiece(1), X);
+  EXPECT_EQ( board.dropPiece(2), O);
+  EXPECT_EQ( board.dropPiece(3), X);
   ASSERT_EQ( board.dropPiece(1), O);
 }
 
@@ -86,21 +97,117 @@ TEST(PiezasTest, doesBoardReset){
   ASSERT_EQ(board.pieceAt(0,1), Blank);
 }
 
-// TEST(PiezasTest, XXX){
-//   Piezas board;
-// }
-//
-// TEST(PiezasTest, XXX){
-//   Piezas board;
-// }
-//
-// TEST(PiezasTest, XXX){
-//   Piezas board;
-// }
-//
-// TEST(PiezasTest, XXX){
-//   Piezas board;
-// }
+TEST(PiezasTest, dropPieceInFullColumn){
+  Piezas board;
+  board.dropPiece(1);
+  board.dropPiece(1);
+  board.dropPiece(1);
+  ASSERT_EQ( board.dropPiece(1), Blank);
+}
+
+TEST(PiezasTest, gameStateXwins){
+  Piezas board;
+  board.dropPiece(0);
+	board.dropPiece(0);
+	board.dropPiece(1);
+	board.dropPiece(2);
+	board.dropPiece(0);
+	board.dropPiece(1);
+	board.dropPiece(1);
+	board.dropPiece(3);
+	board.dropPiece(3);
+	board.dropPiece(2);
+	board.dropPiece(1);
+	board.dropPiece(0);
+	board.dropPiece(2);
+	board.dropPiece(0);
+	board.dropPiece(3);
+  ASSERT_EQ(board.gameState(), X);
+}
+
+TEST(PiezasTest, gameStateXwinsVertically){
+  Piezas board;
+  board.dropPiece(0);
+	board.dropPiece(1);
+	board.dropPiece(0);
+	board.dropPiece(3);
+	board.dropPiece(2);
+	board.dropPiece(1);
+	board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(0);
+  board.dropPiece(2);
+  board.dropPiece(1);
+	board.dropPiece(3);
+  ASSERT_EQ(board.gameState(), X);
+}
+
+TEST(PiezasTest, gameStateOwins){
+  Piezas board;
+  board.dropPiece(1);
+  board.dropPiece(0);
+  board.dropPiece(2);
+  board.dropPiece(0);
+  board.dropPiece(3);
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(1);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(0);
+  board.dropPiece(2);
+  board.dropPiece(0);
+  board.dropPiece(3);
+  ASSERT_EQ(board.gameState(), O);
+}
+
+TEST(PiezasTest, gameStateOwinsVertically){
+  Piezas board;
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(2);
+  board.dropPiece(3);
+  board.dropPiece(1);
+  board.dropPiece(3);
+  board.dropPiece(1);
+  board.dropPiece(0);
+  board.dropPiece(2);
+  board.dropPiece(2);
+  board.dropPiece(0);
+  board.dropPiece(3);
+  ASSERT_EQ(board.gameState(), O);
+}
+
+TEST(PiezasTest, gameStateMidGame){
+  Piezas board;
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(2);
+  board.dropPiece(3);
+  board.dropPiece(1);
+  board.dropPiece(3);
+  board.dropPiece(1);
+  board.dropPiece(0);
+  ASSERT_EQ(board.gameState(), Invalid);
+}
+
+TEST(PiezasTest, gameStateTie){
+  Piezas board;
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(0);
+  board.dropPiece(3);
+  board.dropPiece(0);
+  board.dropPiece(1);
+  board.dropPiece(1);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
+  board.dropPiece(3);
+  board.dropPiece(2);
+  board.dropPiece(2);
+  ASSERT_EQ(board.gameState(), Blank);
+}
 //
 // TEST(PiezasTest, XXX){
 //   Piezas board;
