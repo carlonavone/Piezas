@@ -38,50 +38,46 @@ TEST(PiezasTest, isInitializedBoardBlank){
 
 TEST(PiezasTest, dropPieceInBoundsReturnValue){
   Piezas board;
-  piecePlaced = board.dropPiece(1);
+  Piece piecePlaced = board.dropPiece(1);
   ASSERT_EQ(piecePlaced, 'X');
 }
 
 TEST(PiezasTest, dropPieceOutOfBoundsReturnValue){
   Piezas board;
-  piecePlaced = board.dropPiece(12);
+  Piece piecePlaced = board.dropPiece(12);
   ASSERT_EQ(piecePlaced, '?');
 }
 
 TEST(PiezasTest, dropPieceInBounds){
   Piezas board;
   board.dropPiece(1);
-  ASSERT_EQ(b.pieceAt(0,1), 'X');
+  ASSERT_EQ(board.pieceAt(0,1), 'X');
 }
 
 
 TEST(PiezasTest, pieceAtInBounds){
   Piezas board;
   board.dropPiece(1);
-  ASSERT_EQ(b.pieceAt(0,1), 'X');
+  ASSERT_EQ(board.pieceAt(0,1), 'X');
 }
 
 TEST(PiezasTest, pieceAtOutOfBounds){
   Piezas board;
-  ASSERT_EQ(b.pieceAt(0,12), '?');
+  ASSERT_EQ(board.pieceAt(0,12), '?');
 }
 
 TEST(PiezasTest, CheckFirstTurn){
   Piezas board;
-  ASSERT_EQ(board.turn, 'X');
+  ASSERT_EQ(board.dropPiece(1), 'X');
 }
 
 TEST(PiezasTest, changingTurnsAfterDrop){
   Piezas board;
-  EXPECT_EQ(board.turn, 'X');
-  board.dropPiece(1);
-  EXPECT_EQ(board.turn, 'O');
-  board.dropPiece(2);
-  EXPECT_EQ(board.turn, 'X');
-  board.dropPiece(3);
-  ASSERT_EQ(board.turn, 'O');
+  EXPECT_EQ( board.dropPiece(1), 'X');
+  EXPECT_EQ( board.dropPiece(2), 'O');
+  EXPECT_EQ( board.dropPiece(3), 'X');
+  ASSERT_EQ( board.dropPiece(4), 'O');
 }
-
 
 TEST(PiezasTest, doesBoardReset){
   Piezas board;
